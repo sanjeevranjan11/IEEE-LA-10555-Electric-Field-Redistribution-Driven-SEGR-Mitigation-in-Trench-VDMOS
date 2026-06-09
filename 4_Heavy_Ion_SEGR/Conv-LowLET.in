@@ -1,0 +1,678 @@
+
+######################################################################################################################################################
+#**************************************ATLAS_VERSION-PARALLEL_ATLAS***********************************************************************************
+######################################################################################################################################################
+go atlas simflags="-P 4"
+go atlas simflags="-V 5.22.1.R"
+mesh space.mult=1.0
+######################################################################################################################################################
+#**************************************Mesh-Region-Electrode-Doping***********************************************************
+######################################################################################################################################################
+#***********Define X MESH*****************************************************************************************************************************
+x.mesh loc=0.0 spac=0.5
+x.mesh loc=1 spac=0.5
+x.mesh loc=1.15 spac=0.5
+x.mesh loc=1.5 spac=0.5
+x.mesh loc=2 spac=0.5
+x.mesh loc=2.30 spac=0.5
+x.mesh loc=2.31 spac=0.5
+x.mesh loc=2.32 spac=0.5
+x.mesh loc=2.55 spac=0.5
+x.mesh loc=2.80 spac=0.5
+x.mesh loc=2.81 spac=0.5
+x.mesh loc=2.82 spac=0.5
+x.mesh loc=2.83 spac=0.5
+x.mesh loc=3 spac=0.5
+x.mesh loc=4 spac=0.5
+x.mesh loc=5 spac=0.5
+x.mesh loc=6 spac=0.5
+x.mesh loc=7 spac=0.5
+x.mesh loc=7.180 spac=0.5
+x.mesh loc=7.190 spac=0.5
+x.mesh loc=7.44 spac=0.5
+x.mesh loc=7.690 spac=0.5
+x.mesh loc=8.0 spac=0.5
+x.mesh loc=8.34 spac=0.5
+x.mesh loc=8.4 spac=0.5
+x.mesh loc=8.5 spac=0.5
+x.mesh loc=8.59 spac=0.5
+x.mesh loc=8.6 spac=0.5
+x.mesh loc=9.0 spac=0.5
+x.mesh loc=9.74 spac=0.5
+x.mesh loc=10.0 spac=0.5
+######################################################################################################################################################
+#***********Define Y MESH*****************************************************************************************************************************
+y.mesh loc=-1 spac=0.5
+y.mesh loc=-0.5 spac=0.5
+y.mesh loc=0.0 spac=0.5
+y.mesh loc=0.4 spac=0.5
+y.mesh loc=0.5 spac=0.5
+y.mesh loc=0.6 spac=0.5
+y.mesh loc=1.0 spac=0.5
+y.mesh loc=1.4 spac=0.5
+y.mesh loc=1.5 spac=0.5
+y.mesh loc=1.6 spac=0.5
+y.mesh loc=1.67 spac=0.5
+y.mesh loc=1.68 spac=0.5
+y.mesh loc=1.69 spac=0.5
+y.mesh loc=1.70 spac=0.5
+y.mesh loc=2.0 spac=0.5
+y.mesh loc=3 spac=0.5
+y.mesh loc=4 spac=0.5
+y.mesh loc=5 spac=0.5
+y.mesh loc=6 spac=0.5
+y.mesh loc=7 spac=0.5
+y.mesh loc=8 spac=0.5
+y.mesh loc=9 spac=0.5
+y.mesh loc=10 spac=0.5
+y.mesh loc=11 spac=0.5
+y.mesh loc=12 spac=0.5
+y.mesh loc=13 spac=0.5
+y.mesh loc=14 spac=0.5
+y.mesh loc=15 spac=0.5
+y.mesh loc=16 spac=0.5
+######################################################################################################################################################
+#*************************Define the Region **********************************************************************************************************
+region  number=1 x.min=0 x.max=10 y.min=0 y.max=16 material=silicon
+region  number=2  x.min=2.82 x.max=7.180 y.min=0 y.max=1.68 material=Poly
+region  number=3 x.min=2.81 x.max=2.82 y.min=0 y.max=1.69 material=Sio2
+region  number=4 x.min=7.180 x.max=7.190 y.min=0 y.max=1.69 material=Sio2
+region  number=5 x.min=2.82 x.max=7.180 y.min=1.68 y.max=1.69 material=Sio2
+region  number=6 x.min=0 x.max=1.15 y.min=-1 y.max=0 material=Air
+region  number=7 x.min=2.55 x.max=7.44 y.min=-1 y.max=0 material=Air
+region  number=8 x.min=8.59 x.max=10 y.min=-1 y.max=0 material=Air
+region  number=9 x.min=0 x.max=10 y.min=14 y.max=15 material=silicon
+
+######################################################################################################################################################
+#***********************Define the Electrodes *******************************************************************************************************
+electrode  name=gate  x.min=2.82 x.max=7.180 y.min=0 y.max=1.68 material=Poly
+electrode  name=drain  x.min=0 x.max=10 y.min=15 y.max=16 material=Aluminum
+electrode  name=source x.min=1.15 x.max=2.55 y.min=-1 y.max=0 material=Aluminum
+electrode  name=source x.min=7.44 x.max=8.59 y.min=-1 y.max=0 material=Aluminum
+###################################################################################################################################################
+#**********************************************************Define the Doping Concentrations***********************************************************
+######################################################################################################################################################
+#***********************N+ SUBSTRATE*******************************************************************************************************************
+doping  n.type conc=1e19 x.min=0 x.max=10 y.min=14 y.max=15 uniform
+#********************N EPITAXAIL LAYER***************************************************************************************************************
+doping  n.type conc=1.5e15 x.min=0 x.max=10 y.min=1.5 y.max=15 uniform
+#doping  n.type conc=1.5e15 x.min=0 x.max=2.81 y.min=1.5 y.max=15 uniform
+#doping  n.type conc=1.5e15 x.min=2.81 x.max=7.190 y.min=1.69 y.max=15 uniform
+#doping  n.type conc=1.5e15 x.min=7.190 x.max=12 y.min=1.5 y.max=15 uniform
+#####################################################################################################################################################
+#*********************************Define the Doping Concentrations***********************************************************************************
+#*************************UNIFORM*******SOURCE N+****************************************************************************************************
+doping  n.type conc=3e19 x.min=2.31 x.max=2.82 y.min=0 y.max=0.5 uniform
+doping  n.type conc=3e19 x.min=7.190 x.max=7.69 y.min=0 y.max=0.5 uniform
+#*************************UNIFORM*******PBODY*********************************************************************************************************
+doping  p.type conc=2.8e16 x.min=2.31 x.max=2.82 y.min=0.5 y.max=1.5 uniform
+doping  p.type conc=2.8e16 x.min=7.190 x.max=7.69 y.min=0.5 y.max=1.5 uniform
+#*************************UNIFORM*******P+ PLUG******************************************************************************************************
+doping  p.type conc=2.26e19 x.min=0 x.max=2.31 y.min=0 y.max=1.5 uniform
+doping  p.type conc=2.26e19 x.min=7.69 x.max=10 y.min=0 y.max=1.5 uniform
+#************************UNIFORM*******P+ ISLAND******************************************************************************************************
+doping  P.type conc=2e16 x.min=0 x.max=1.5 y.min=6 y.max=7 uniform
+doping  P.type conc=2e16 x.min=8.5 x.max=10 y.min=6 y.max=7 uniform
+###################################################################################################################################################
+######################################################################################################################################################
+struct outf=Trench-HK-Single-FLI-VDMOS-Conv.str
+tonyplot Trench-HK-Single-FLI-VDMOS-Conv.str
+######################################################################################################################################################
+#****************************************Define Material-Models-contact-interface********************************************************************
+#################################################################################################################################################### 
+models SRH AUGER FLDMOB CONMOB FERMI ANALYTIC
+IMPACT SELB
+contact name=gate n.poly
+method newton 
+#interface qf=3e10 x.min=2.5 x.max=2.55 y.min=1.6 y.max=4
+#################################################################################################################################################### 
+#****************************************Define Numerical Method*************************************************************************************
+######################################################################################################################################################
+#method newton gummel DVMAX=1e8
+#################################################################################################################################################### 
+#****************************************Solution-Specification-LOG-SOLVE-LOAD-SAVE******************************************************************
+######################################################################################################################################################
+#****************************************RESULT-ANALYSIS-EXTRACT-TONYPLOT*****************************************************************************
+######################################################################################################################################################
+#####################################################################################################################################################
+######################################################################################################################################################
+######################################################################################################################################################
+# LET=45    VG=0V   VDS=80 to 130
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=80 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_80_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_80_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_80_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_80_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_80_1_4.str
+tonyplot PropVGO_45_80_1_0.log 
+tonyplot PropVGO_45_80_1_1.str PropVGO_45_80_1_2.str PropVGO_45_80_1_3.str PropVGO_45_80_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_80_1_0.log
+tonyplot PropVGO_45_80_1_0.str
+save outfile=PropVGO_45_80_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=90 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_90_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_90_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_90_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_90_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_90_1_4.str
+tonyplot PropVGO_45_90_1_0.log 
+tonyplot PropVGO_45_90_1_1.str PropVGO_45_90_1_2.str PropVGO_45_90_1_3.str PropVGO_45_90_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_90_1_0.log
+tonyplot PropVGO_45_90_1_0.str
+save outfile=PropVGO_45_90_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=100 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_100_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_100_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_100_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_100_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_100_1_4.str
+tonyplot PropVGO_45_100_1_0.log 
+tonyplot PropVGO_45_100_1_1.str PropVGO_45_100_1_2.str PropVGO_45_100_1_3.str PropVGO_45_100_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_100_1_0.log
+tonyplot PropVGO_45_100_1_0.str
+save outfile=PropVGO_45_100_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=110 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_110_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_110_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_110_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_110_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_110_1_4.str
+tonyplot PropVGO_45_110_1_0.log 
+tonyplot PropVGO_45_110_1_1.str PropVGO_45_110_1_2.str PropVGO_45_110_1_3.str PropVGO_45_110_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_110_1_0.log
+tonyplot PropVGO_45_110_1_0.str
+save outfile=PropVGO_45_110_1_0.str
+log off
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=120 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_120_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_120_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_120_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_120_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_120_1_4.str
+tonyplot PropVGO_45_120_1_0.log 
+tonyplot PropVGO_45_120_1_1.str PropVGO_45_120_1_2.str PropVGO_45_120_1_3.str PropVGO_45_120_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_120_1_0.log
+tonyplot PropVGO_45_120_1_0.str
+save outfile=PropVGO_45_120_1_0.str
+log off
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=130 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVGO_45_130_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVGO_45_130_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVGO_45_130_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVGO_45_130_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVGO_45_130_1_4.str
+tonyplot PropVGO_45_130_1_0.log 
+tonyplot PropVGO_45_130_1_1.str PropVGO_45_130_1_2.str PropVGO_45_130_1_3.str PropVGO_45_130_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVGO_45_130_1_0.log
+tonyplot PropVGO_45_130_1_0.str
+save outfile=PropVGO_45_130_1_0.str
+log off
+######################################################################################################################################################
+# LET=45    VG=-10V   VDS=80 to 130
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+solve vgate=-0.1
+solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=80 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_80_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_80_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_80_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_80_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_80_1_4.str
+tonyplot PropVG10_45_80_1_0.log 
+tonyplot PropVG10_45_80_1_1.str PropVG10_45_80_1_2.str PropVG10_45_80_1_3.str PropVG10_45_80_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_80_1_0.log
+tonyplot PropVG10_45_80_1_0.str
+save outfile=PropVG10_45_80_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+solve vgate=-0.1
+solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=90 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_90_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_90_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_90_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_90_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_90_1_4.str
+tonyplot PropVG10_45_90_1_0.log 
+tonyplot PropVG10_45_90_1_1.str PropVG10_45_90_1_2.str PropVG10_45_90_1_3.str PropVG10_45_90_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_90_1_0.log
+tonyplot PropVG10_45_90_1_0.str
+save outfile=PropVG10_45_90_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+solve vgate=-0.1
+solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=100 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_100_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_100_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_100_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_100_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_100_1_4.str
+tonyplot PropVG10_45_100_1_0.log 
+tonyplot PropVG10_45_100_1_1.str PropVG10_45_100_1_2.str PropVG10_45_100_1_3.str PropVG10_45_100_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_100_1_0.log
+tonyplot PropVG10_45_100_1_0.str
+save outfile=PropVG10_45_100_1_0.str
+log off
+#####################################################################################################################################################
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+solve vgate=-0.1
+solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=110 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_110_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_110_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_110_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_110_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_110_1_4.str
+tonyplot PropVG10_45_110_1_0.log 
+tonyplot PropVG10_45_110_1_1.str PropVG10_45_110_1_2.str PropVG10_45_110_1_3.str PropVG10_45_110_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_110_1_0.log
+tonyplot PropVG10_45_110_1_0.str
+save outfile=PropVG10_45_110_1_0.str
+log off
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+solve vgate=-0.1
+solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=120 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_120_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_120_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_120_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_120_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_120_1_4.str
+tonyplot PropVG10_45_120_1_0.log 
+tonyplot PropVG10_45_120_1_1.str PropVG10_45_120_1_2.str PropVG10_45_120_1_3.str PropVG10_45_120_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_120_1_0.log
+tonyplot PropVG10_45_120_1_0.str
+save outfile=PropVG10_45_120_1_0.str
+log off
+######################################################################################################################################################
+go atlas
+
+mesh infile=Trench-HK-Single-FLI-VDMOS-Conv.str 
+
+set let=45
+set density=$let*0.011
+
+models consrh cvt auger
+contact name=gate n.poly
+
+singleeventupset entrypoint="5,-1,0" exitpoint="5,16,0" radialgauss \
+      b.density=$density pcunits radius=0.07 t0=1e-14 tc=1e-15
+
+probe name=Strike_Field field dir=270 x=6.00 y=1.685
+probe name=Source_Field field dir=270 x=10.0 y=1.685
+
+method climit=1e-4
+
+# Set Up DC Bias Condition
+solve init
+solve previous
+solve vgate=0
+#solve vgate=-0.1
+#solve vgate=-0.4 vstep=-0.5 vfinal=-10 name=gate
+solve vdrain=0.1
+solve vdrain=0.5 vstep=0.5 vfinal=130 name=drain
+# Start SEU Transient Simulation
+log outfile=PropVG10_45_130_1_0.log
+solve tfinal=1e-14 dt=1e-16
+save outfile=PropVG10_45_130_1_1.str
+solve tfinal=5e-12 dt=1e-16
+save outfile=PropVG10_45_130_1_2.str
+solve tfinal=50e-12 dt=1e-15
+save outfile=PropVG10_45_130_1_3.str
+solve tfinal=150e-12 dt=1e-14
+save outfile=PropVG10_45_130_1_4.str
+tonyplot PropVG10_45_130_1_0.log 
+tonyplot PropVG10_45_130_1_1.str PropVG10_45_130_1_2.str PropVG10_45_130_1_3.str PropVG10_45_130_1_4.str 
+solve tfinal=1e-9 dt=1e-12
+tonyplot PropVG10_45_130_1_0.log
+tonyplot PropVG10_45_130_1_0.str
+save outfile=PropVG10_45_130_1_0.str
+log off
+quit
+#########################################################################################################################################################################
