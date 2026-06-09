@@ -1,0 +1,116 @@
+go atlas
+
+#################################################
+# 1. MESH
+#################################################
+mesh
+
+x.mesh loc=0.00 spac=0.05
+x.mesh loc=0.50 spac=0.05
+x.mesh loc=1.00 spac=0.02
+x.mesh loc=1.05 spac=0.01
+x.mesh loc=1.45 spac=0.01
+x.mesh loc=1.50 spac=0.02
+x.mesh loc=2.00 spac=0.05
+x.mesh loc=2.50 spac=0.05
+
+y.mesh loc=-1.00 spac=0.1
+y.mesh loc=-0.50 spac=0.1
+y.mesh loc=0.00  spac=0.02
+y.mesh loc=0.10  spac=0.02
+y.mesh loc=0.30  spac=0.02
+y.mesh loc=0.50  spac=0.02
+y.mesh loc=1.00  spac=0.02
+y.mesh loc=2.50  spac=0.1
+y.mesh loc=5.00  spac=0.1
+y.mesh loc=5.50  spac=0.05
+y.mesh loc=7.50  spac=0.1
+y.mesh loc=9.00  spac=0.1
+
+#################################################
+# 2. REGIONS
+#################################################
+# Silicon Base
+region num=1 material=Si x.min=0.0 x.max=2.5 y.min=0.0 y.max=9.0
+
+# Trench oxide
+region num=2 material=oxide x.min=1.0 x.max=1.5 y.min=0.0 y.max=5.50
+
+# Gate polysilicon (upper gate)
+region num=3 material=poly x.min=1.05 x.max=1.45 y.min=0.0 y.max=0.1
+
+# Split gate polysilicon
+region num=4 material=poly x.min=1.05 x.max=1.45 y.min=0.3 y.max=5.00
+
+# Source air
+region num=5 material=air x.min=0.8 x.max=1.7 y.min=-0.5 y.max=0.0
+
+# Source contact
+region num=6 material=aluminum x.min=0.0 x.max=0.8 y.min=-0.5 y.max=0.0
+region num=7 material=aluminum x.min=1.7 x.max=2.5 y.min=-0.5 y.max=0.0
+region num=8 material=aluminum x.min=0.0 x.max=2.5 y.min=-1.0 y.max=-0.5
+
+#################################################
+# 3. ELECTRODES
+#################################################
+# Source Electrode
+electrode name=source x.min=0.0 x.max=2.5 y.min=-1.0 y.max=0.0
+
+# Upper Control Gate Electrode
+electrode name=gate x.min=1.05 x.max=1.45 y.min=0.0 y.max=0.1
+
+# Split-Gate Electrode
+electrode name=source x.min=1.05 x.max=1.45 y.min=0.3 y.max=5.00
+
+# Drain Electrode
+electrode name=drain x.min=0.0 x.max=2.5 y.min=8.9 y.max=9.0
+
+#################################################
+# 4. DOPING
+#################################################
+# N- Drift
+doping uniform region=1 n.type conc=8e15 y.min=1.0 y.max=7.5
+
+# N+ Substrate
+doping uniform region=1 n.type conc=1e19 y.min=7.5 y.max=9.0
+
+# Left P-body
+doping uniform region=1 p.type conc=1e17 x.min=0.0 x.max=1.0 y.min=0.5 y.max=1.00
+
+# Right P-body
+doping uniform region=1 p.type conc=1e17 x.min=1.50 x.max=2.50 y.min=0.5 y.max=1.00
+
+# Left N+ Source
+doping uniform region=1 n.type conc=1e19 x.min=0.50 x.max=1.0 y.min=0.0 y.max=0.50
+
+# Right N+ Source
+doping uniform region=1 n.type conc=1e19 x.min=1.50 x.max=2.00 y.min=0.0 y.max=0.5
+
+# Left P+ Contact
+doping uniform region=1 p.type conc=1e19 x.min=0.0 x.max=0.5 y.min=0.0 y.max=0.5
+
+# Right P+ Contact
+doping uniform region=1 p.type conc=1e19 x.min=2.0 x.max=2.50 y.min=0.0 y.max=0.50
+
+#################################################
+# 5. MODELS & ANALYSIS
+#################################################
+models srh conmob fldmob auger impact selb
+
+method newton
+solve init
+save outf=trench_split_gate.str
+# Ground gate and source
+solve vgate=0.0 vsource=0.0 vdrain=0.0
+
+# Log the breakdown performance
+log outf=trench_split_gate_bv.log
+
+
+solve vdrain=0.1 vstep=0.1 vfinal=5.0 name=drain
+solve vdrain=5.0 vstep=1.0 vfinal=80.0 name=drain
+solve vdrain=80.0 vstep=0.5 vfinal=120.0 name=drain compl=1.0e-4
+
+# Plot
+tonyplot trench_split_gate_bv.log
+quit

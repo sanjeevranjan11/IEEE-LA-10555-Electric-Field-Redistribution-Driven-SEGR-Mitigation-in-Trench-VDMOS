@@ -1,0 +1,271 @@
+######################################################################################################################################################
+#**************************************ATLAS_VERSION-PARALLEL_ATLAS***********************************************************************************
+######################################################################################################################################################
+go atlas simflags="-P 4"
+go atlas simflags="-V 5.22.1.R"
+mesh space.mult=1.0
+######################################################################################################################################################
+#**************************************Mesh-Region-Electrode-Doping***********************************************************
+######################################################################################################################################################
+#***********Define X MESH*****************************************************************************************************************************
+x.mesh loc=0.0 spac=0.5
+x.mesh loc=3.0 spac=0.5
+x.mesh loc=4 spac=0.5
+x.mesh loc=4.80 spac=0.5
+x.mesh loc=4.81 spac=0.5
+x.mesh loc=4.82 spac=0.5
+x.mesh loc=5 spac=0.5
+x.mesh loc=5 spac=0.5
+x.mesh loc=5.05 spac=0.5
+x.mesh loc=5.06 spac=0.5
+x.mesh loc=5.07 spac=0.5
+x.mesh loc=5.30 spac=0.5
+x.mesh loc=5.31 spac=0.5
+x.mesh loc=5.4 spac=0.5
+x.mesh loc=5.5 spac=0.5
+x.mesh loc=5.55 spac=0.5
+x.mesh loc=5.56 spac=0.5
+x.mesh loc=5.57 spac=0.5
+x.mesh loc=5.58 spac=0.5
+x.mesh loc=5.6 spac=0.5
+x.mesh loc=5.74 spac=0.5
+x.mesh loc=5.75 spac=0.5
+x.mesh loc=5.76 spac=0.5
+x.mesh loc=6.0 spac=0.5
+x.mesh loc=6.24 spac=0.5
+x.mesh loc=6.25 spac=0.5
+x.mesh loc=6.42 spac=0.5
+x.mesh loc=6.43 spac=0.5
+x.mesh loc=6.44 spac=0.5
+x.mesh loc=6.45 spac=0.5
+x.mesh loc=6.5 spac=0.5
+x.mesh loc=6.6 spac=0.5
+x.mesh loc=6.68 spac=0.5
+x.mesh loc=6.69 spac=0.5
+x.mesh loc=6.70 spac=0.5
+x.mesh loc=6.93 spac=0.5
+x.mesh loc=6.94 spac=0.5
+x.mesh loc=6.95 spac=0.5
+x.mesh loc=7.0 spac=0.5
+x.mesh loc=7.18 spac=0.5
+x.mesh loc=7.19 spac=0.5
+x.mesh loc=7.20 spac=0.5
+x.mesh loc=8.0 spac=0.5
+x.mesh loc=10.0 spac=0.5
+x.mesh loc=12 spac=0.5
+######################################################################################################################################################
+#***********Define Y MESH*****************************************************************************************************************************
+y.mesh loc=-1 spac=0.5
+y.mesh loc=-0.5 spac=0.5
+y.mesh loc=0.0 spac=0.5
+y.mesh loc=0.4 spac=0.5
+y.mesh loc=0.5 spac=0.5
+y.mesh loc=0.6 spac=0.5
+y.mesh loc=1.0 spac=0.5
+y.mesh loc=1.4 spac=0.5
+y.mesh loc=1.5 spac=0.5
+y.mesh loc=1.6 spac=0.5
+y.mesh loc=1.67 spac=0.5
+y.mesh loc=1.68 spac=0.5
+y.mesh loc=1.69 spac=0.5
+y.mesh loc=1.70 spac=0.5
+y.mesh loc=2.0 spac=0.5
+y.mesh loc=3.0 spac=0.5
+y.mesh loc=4.0 spac=0.5
+y.mesh loc=5.0 spac=0.5
+y.mesh loc=5.77 spac=0.5
+y.mesh loc=5.78 spac=0.5
+y.mesh loc=5.79 spac=0.5
+y.mesh loc=6.21 spac=0.5
+y.mesh loc=6.22 spac=0.5
+y.mesh loc=6.23 spac=0.5
+y.mesh loc=7 spac=0.5
+y.mesh loc=09 spac=0.5
+y.mesh loc=10 spac=0.5
+y.mesh loc=11 spac=0.5
+y.mesh loc=12 spac=0.5
+y.mesh loc=15 spac=0.5
+y.mesh loc=19 spac=0.5
+y.mesh loc=20 spac=0.5
+y.mesh loc=21 spac=0.5
+y.mesh loc=24 spac=0.5
+y.mesh loc=25 spac=0.5
+y.mesh loc=26 spac=0.5
+y.mesh loc=27 spac=0.5
+y.mesh loc=29 spac=0.5
+y.mesh loc=30 spac=0.5
+y.mesh loc=31 spac=0.5
+y.mesh loc=32 spac=0.5
+y.mesh loc=34 spac=0.5
+y.mesh loc=35 spac=0.5
+y.mesh loc=36 spac=0.5
+y.mesh loc=39.9 spac=0.5
+y.mesh loc=40 spac=0.5
+y.mesh loc=40.1 spac=0.5
+y.mesh loc=47.74 spac=0.5
+y.mesh loc=47.75 spac=0.5
+y.mesh loc=47.76 spac=0.5
+y.mesh loc=50.0 spac=0.5
+y.mesh loc=55.0 spac=0.5
+y.mesh loc=55.4 spac=0.5
+y.mesh loc=55.5 spac=0.5
+y.mesh loc=55.6 spac=0.5
+y.mesh loc=56.4 spac=0.5
+y.mesh loc=56.5 spac=0.5
+y.mesh loc=56.6 spac=0.5
+y.mesh loc=57 spac=0.5
+######################################################################################################################################################
+#*************************Define the Region **********************************************************************************************************
+region  number=1 x.min=0 x.max=12 y.min=-1 y.max=57  material=silicon
+region  number=2 x.min=4.81 x.max=5.31 y.min=-1 y.max=0 material=Aluminum
+region  number=3 x.min=6.69 x.max=7.19 y.min=-1 y.max=0 material=Aluminum
+region  number=4  x.min=5.75 x.max=6.25 y.min=-1 y.max=1.5 material=Poly
+region  number=5 x.min=6.25 x.max=6.43 y.min=0 y.max=1.68 material=Si3N4
+region  number=6 x.min=6.43 x.max=6.44 y.min=0 y.max=1.69 material=Sio2
+region  number=7 x.min=5.56 x.max=5.57 y.min=0 y.max=1.69 material=Sio2
+region  number=8 x.min=5.57 x.max=5.75 y.min=0 y.max=1.68 material=Si3N4
+region  number=9 x.min=5.57 x.max=6.43 y.min=1.5 y.max=1.68 material=Si3N4
+region  number=10 x.min=5.56 x.max=6.44 y.min=1.68 y.max=1.69 material=Sio2
+region  number=11 x.min=0 x.max=4.81 y.min=-1 y.max=0 material=Air
+region  number=12 x.min=5.31 x.max=6.69 y.min=-1 y.max=0 material=Air
+region  number=13 x.min=7.19 x.max=12 y.min=-1 y.max=0 material=Air
+######################################################################################################################################################
+#***********************Define the Electrodes *******************************************************************************************************
+electrode  name=gate  x.min=5.75 x.max=6.25 y.min=-1 y.max=1.5 material=Poly
+electrode  name=drain  x.min=0 x.max=12 y.min=56.5 y.max=57 material=Aluminum
+electrode  name=source x.min=4.81 x.max=5.31 y.min=-1 y.max=0 material=Aluminum
+electrode  name=source x.min=6.69 x.max=7.19 y.min=-1 y.max=0 material=Aluminum
+###################################################################################################################################################
+#**********************************************************Define the Doping Concentrations***********************************************************
+######################################################################################################################################################
+#***********************N+ SUBSTRATE*******************************************************************************************************************
+doping  n.type conc=1e19 x.min=0 x.max=12 y.min=55.5 y.max=56.5 uniform
+#************************N BUFFER*******************************************************************************************************************
+doping  n.type conc=5e16 x.min=0 x.max=12 y.min=40 y.max=47.75 uniform
+doping  n.type conc=5e17 x.min=0 x.max=12 y.min=47.75 y.max=55.5 uniform
+#********************N EPITAXAIL LAYER***************************************************************************************************************
+doping  p.type conc=3e15 x.min=0 x.max=3 y.min=1.5 y.max=40 uniform
+doping  n.type conc=3e15 x.min=3 x.max=5.56 y.min=1.5 y.max=40 uniform
+doping  n.type conc=3e15 x.min=5.56 x.max=6.44 y.min=1.69 y.max=40 uniform
+doping  n.type conc=3e15 x.min=6.44 x.max=9 y.min=1.5 y.max=40 uniform
+doping  p.type conc=3e15 x.min=9 x.max=12 y.min=1.5 y.max=40 uniform
+#####################################################################################################################################################
+#*********************************Define the Doping Concentrations***********************************************************************************
+#*************************UNIFORM*******SOURCE N+****************************************************************************************************
+doping  n.type conc=3e19 x.min=5.06 x.max=5.56 y.min=0 y.max=0.5 uniform
+doping  n.type conc=3e19 x.min=6.44 x.max=6.94 y.min=0 y.max=0.5 uniform
+#*************************UNIFORM*******PBODY*********************************************************************************************************
+doping  p.type conc=2.8e16 x.min=5.06 x.max=5.56 y.min=0.5 y.max=1.5 uniform
+doping  p.type conc=2.8e16 x.min=6.44 x.max=6.94 y.min=0.5 y.max=1.5 uniform
+#*************************UNIFORM*******P+ PLUG******************************************************************************************************
+doping  p.type conc=2.26e19 x.min=0 x.max=5.06 y.min=0 y.max=1.5 uniform
+doping  p.type conc=2.26e19 x.min=6.94 x.max=12 y.min=0 y.max=1.5 uniform
+#************************UNIFORM*******P+ ISLAND******************************************************************************************************
+doping  P.type conc=2e16 x.min=5.5 x.max=6.5 y.min=10 y.max=11 uniform
+###################################################################################################################################################
+######################################################################################################################################################
+struct outf=Trench-HK-SJ-VDMOS.str
+tonyplot Trench-HK-SJ-VDMOS.str
+######################################################################################################################################################
+#****************************************Define Material-Models-contact-interface********************************************************************
+#################################################################################################################################################### 
+models SRH AUGER CVT FLDMOB CONMOB 
+IMPACT SELB
+contact name=gate n.poly
+method newton 
+#interface qf=3e10 x.min=2.5 x.max=2.55 y.min=1.6 y.max=4
+#################################################################################################################################################### 
+#****************************************Define Numerical Method*************************************************************************************
+######################################################################################################################################################
+#method newton gummel DVMAX=1e8
+#################################################################################################################################################### 
+#****************************************Solution-Specification-LOG-SOLVE-LOAD-SAVE******************************************************************
+######################################################################################################################################################
+#****************************************RESULT-ANALYSIS-EXTRACT-TONYPLOT*****************************************************************************
+######################################################################################################################################################
+############# Vt Test : Returns Vt, Beta and Theta ################
+go atlas
+mesh infile=Trench-HK-SJ-VDMOS.str
+# set material models
+models cvt srh print 
+contact name=gate n.poly
+#interface qf=3e10 x.left=2.5 x.right=2.55 y.top=1.6 y.bottom=4
+method newton
+solve init
+# Bias the drain 
+solve vdrain=0.1 
+# Ramp the gate
+log outf=Trench-HK-SJ-VDMOS-Vth1.log 
+solve vgate=0 vstep=0.05 vfinal=15 name=gate
+save outf=Trench-HK-SJ-VDMOS-Vth1.str
+tonyplot=Trench-HK-SJ-VDMOS-Vth1.str
+# plot results
+tonyplot Trench-HK-SJ-VDMOS-Vth1.log 
+#
+extract name="vt" (xintercept(maxslope(curve(abs(v."gate"),abs(i."drain")))) - abs(ave(v."drain"))/2.0)
+######################################################################################################################################################
+######################################################################################################################################################
+######################################################################################################################################################
+#OutputCharacteristics#
+#Calculation of Area Specific on resistance#
+solve init
+solve vgate=3 
+log outf=pvdvg_3.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+solve init
+solve vgate=3.5
+log outf=pvdvg_3.5.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+solve init
+solve vgate=4
+log outf=pvdvg_4.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+
+solve init
+solve vgate=4.5
+log outf=pvdvg_4.5.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+solve init
+solve vgate=5
+log outf=pvdvg_5.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+solve init
+solve vgate=5.5
+log outf=pvdvg_5.5.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+solve init
+solve vgate=6
+log outf=pvdvg_6.log
+solve name=drain vdrain=0 vfinal=20 vstep=0.25
+
+tonyplot -overlay pvdvg_3.log pvdvg_3.5.log pvdvg_4.log pvdvg_4.5.log pvdvg_5.log pvdvg_5.5.log pvdvg_6.log
+log off
+######################################################################################################################################################
+######################################################################################################################################################
+# DC Breakdown Simulation
+go atlas
+mesh infile=Trench-HK-SJ-VDMOS.str
+models consrh cvt
+impact selb
+contact name=gate n.poly
+#INTERFACE QF=3e10 
+method climit=1e-4 maxtraps=6
+solve init
+solve previous
+log outfile=Trench-HK-SJ-VDMOS-BV.log
+solve vdrain=0.1
+Solve vdrain=0.5 vstep=0.05 vfinal=800 name=drain
+tonyplot Trench-HK-SJ-VDMOS-BV.log 
+save outfile=Trench-HK-SJ-VDMOS-BV.str
+tonyplot Trench-HK-SJ-VDMOS-BV.str
+#
+extract name="bvds" x.val from curve(abs(v."drain"),abs(i."drain")) where y.val = 1.0e-6/$"width"
+log off
+quit
+######################################################################################################################################################
